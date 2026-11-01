@@ -39,8 +39,9 @@ the 64/32/16 strip pattern) and the logo-design corpus ("test at 20px, not
    collision and show it to the human. Do **not** drop a candidate on this
    axis: in this repo's bake-off the mark rejected here as "reads as a download
    arrow" was the maintainer's first pick.
-9. **Contrast on dark** — glyph tones hold against the dark grey background at
-   every size; thin light strokes on dark die first.
+9. **Palette contrast** — adjacent shapes and the glyph/background remain
+   distinguishable at every size. Check the actual brief palette; thin strokes
+   and close luminance values disappear first.
 
 ## Targeted fixes, in order of preference
 

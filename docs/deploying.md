@@ -9,7 +9,7 @@ walks the same steps.
 
 ## How distribution works
 
-- Consumers run `npx skills add Paldom/icon-designer-skills` — the CLI
+- Consumers run `npx skills add borg0ai/as-iconify` — the CLI
   discovers every `skills/<name>/SKILL.md` (and the `.claude-plugin/` manifests)
   and installs into their agent of choice.
 - The repo appears on the skills.sh leaderboard **automatically** after real
@@ -42,21 +42,21 @@ walks the same steps.
 gh skill publish --dry-run
 
 # 1. Make the repository public (this is the deployment event)
-gh repo edit Paldom/icon-designer-skills --visibility public --accept-visibility-change-consequences
+gh repo edit borg0ai/as-iconify --visibility public --accept-visibility-change-consequences
 
 # 2. Turn on the public-repo protections
 #    (PVR + branch ruleset + a v* tag ruleset for immutable releases -
 #     see the SECURITY.md note and repo-protections guidance)
-gh api repos/Paldom/icon-designer-skills/private-vulnerability-reporting --method PUT
+gh api repos/borg0ai/as-iconify/private-vulnerability-reporting --method PUT
 
 # 3. Cut a versioned release (matches .claude-plugin/plugin.json) + topics
 gh skill publish --tag v0.1.0
-gh repo edit Paldom/icon-designer-skills --add-topic skills-sh
+gh repo edit borg0ai/as-iconify --add-topic skills-sh
 
 # 4. Verify installability exactly like a consumer
-npx skills add Paldom/icon-designer-skills --list
+npx skills add borg0ai/as-iconify --list
 mkdir -p /tmp/skills-verify && cd /tmp/skills-verify
-npx skills add Paldom/icon-designer-skills --skill '*' -a claude-code -y
+npx skills add borg0ai/as-iconify --skill '*' -a claude-code -y
 npx skills list -a claude-code
 ```
 
@@ -64,7 +64,7 @@ npx skills list -a claude-code
 frontmatter (recommended field, scaffolded by default here); the
 `.claude/skills/` warning is expected — those are this repo's own bundled dev
 skills, committed by design. The README ships with the install-count badge
-(`https://skills.sh/b/Paldom/icon-designer-skills`) linking to the repo's
+(`https://skills.sh/b/borg0ai/as-iconify`) linking to the repo's
 skills.sh page.
 
 The verification install above is also what seeds the first telemetry event —

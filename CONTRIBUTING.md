@@ -1,11 +1,11 @@
 # Contributing
 
-Thanks for helping improve Icon Designer Skills! This repo distributes Agent Skills, so the
+Thanks for helping improve Iconify Design Skills. This repo distributes Agent Skills, so the
 bar is: every skill must trigger reliably, do one thing well, and pass the validator.
 
 ## Proposing a skill
 
-Open a [skill proposal issue](https://github.com/Paldom/icon-designer-skills/issues/new?template=skill_proposal.md)
+Open a [skill proposal issue](https://github.com/borg0ai/as-iconify/issues/new?template=skill_proposal.md)
 first for anything non-trivial. Say what the skill does, when it should trigger, when it should
 NOT trigger, and what Claude currently gets wrong without it ("a good skill is a scar,
 not a resume" — if you can't name the failure it fixes, it probably shouldn't exist).

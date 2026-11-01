@@ -7,6 +7,19 @@ versioning: [SemVer](https://semver.org) on the plugin manifest
 
 ## [Unreleased]
 
+### Added
+- Added `icon-design` to route end-to-end work through the focused icon skills,
+  carrying product references, visual direction, and palette through each stage.
+
+### Changed
+- Rebranded repository and plugin as Iconify Design Skills; updated owned URLs
+  and Git remote to `borg0ai/as-iconify`, preserving original copyright attribution.
+- `icon-brief` and `icon-draw` now follow product identity instead of enforcing
+  dark-grey symmetry and a three-color cap. Up to seven purposeful colors are
+  supported, and SVG background brightness is a contrast warning rather than
+  a hard failure.
+- `icon-critique` now judges contrast against the brief's palette.
+
 ## [0.4.0] - 2026-08-31
 
 ### Added

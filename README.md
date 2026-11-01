@@ -1,14 +1,14 @@
 <p align="center">
-  <img src="assets/icon.svg" alt="icon-designer-skills icon" width="128"/>
+  <img src="assets/icon.svg" alt="Iconify Design Skills icon" width="128"/>
 </p>
 
-# Icon Designer Skills
+# Iconify Design Skills
 
-[![CI](https://github.com/Paldom/icon-designer-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/Paldom/icon-designer-skills/actions/workflows/ci.yml)
+[![CI](https://github.com/borg0ai/as-iconify/actions/workflows/ci.yml/badge.svg)](https://github.com/borg0ai/as-iconify/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![skills.sh](https://skills.sh/b/Paldom/icon-designer-skills)](https://skills.sh/Paldom/icon-designer-skills)
+[![skills.sh](https://skills.sh/b/borg0ai/as-iconify)](https://skills.sh/borg0ai/as-iconify)
 
-Agent Skills that design minimalist app and OSS package icons from a text brief or project context - symmetric logos on dark grey, Apple-style rounded-rectangle backgrounds.
+Agent Skills for designing distinctive app and OSS package icons that match product identity, from concept through platform assets.
 
 Agent Skills for [Claude Code](https://code.claude.com/docs/en/skills) (and any
 [Agent Skills](https://agentskills.io)-compatible tool). Each skill is a folder under
@@ -21,44 +21,44 @@ Install with the [skills CLI](https://skills.sh) — auto-detects 70+ agents
 (Claude Code, Codex, Cursor, Copilot, pi, …):
 
 ```bash
-npx skills add Paldom/icon-designer-skills                  # all detected agents
-npx skills add Paldom/icon-designer-skills -a codex -a pi   # or target specific agents
+npx skills add borg0ai/as-iconify                  # all detected agents
+npx skills add borg0ai/as-iconify -a codex -a pi   # or target specific agents
 ```
 
 Or with the [GitHub CLI](https://cli.github.com/manual/gh_skill_install) (≥ 2.90),
 including version-pinned installs from releases:
 
 ```bash
-gh skill install Paldom/icon-designer-skills
-gh skill install Paldom/icon-designer-skills <skill> --pin v0.3.0
+gh skill install borg0ai/as-iconify
+gh skill install borg0ai/as-iconify <skill> --pin v0.3.0
 ```
 
 Or as a Claude Code plugin:
 
 ```
-/plugin marketplace add Paldom/icon-designer-skills
-/plugin install icon-designer-skills@icon-designer-skills
+/plugin marketplace add borg0ai/as-iconify
+/plugin install iconify-design-skills@iconify-design-skills
 ```
 
 Or copy a single skill into a project:
 
 ```bash
-git clone https://github.com/Paldom/icon-designer-skills.git
-cp -r icon-designer-skills/skills/<skill-name> your-project/.claude/skills/
+git clone https://github.com/borg0ai/as-iconify.git
+cp -r as-iconify/skills/<skill-name> your-project/.claude/skills/
 ```
 
-Then just describe the task in Claude Code — the skill activates on its description —
-or invoke it explicitly with `/<skill-name>`. To run the whole pipeline
-(brief → draw → critique → export) against a repo in one supervised session, paste
-the ready-made goal prompt from [docs/setup-prompt.md](docs/setup-prompt.md).
+Then describe the task in Claude Code or invoke `/<skill-name>`. Use `/icon-design`
+to route a complete project, or paste the end-to-end goal prompt from
+[docs/setup-prompt.md](docs/setup-prompt.md).
 
 ## Skills
 
 | Skill | Description |
 | --- | --- |
-| [icon-brief](skills/icon-brief/) | Derives a minimalist icon design brief from a text prompt or the current repo — 3-5 symbol concepts that each name a depictable object, symmetry axis, house palette, distinctiveness checks against category clichés and universal UI glyphs. |
-| [icon-draw](skills/icon-draw/) | Draws the icon as a master 1024×1024 SVG — glyph on a dark grey rounded-rectangle (Apple-style radius) — as 2-4 candidates that clear the safe-subset linter, ready for critique. |
-| [icon-critique](skills/icon-critique/) | Renders candidates at 512/64/32/16 px and reviews the pixels against a fixed rubric, applying targeted SVG fixes with a hard iteration cap — then hands every candidate to the human, who picks. |
+| [icon-design](skills/icon-design/) | Guides the complete workflow, routes each stage to the right skill, and carries product identity, reference style, and palette through to export. |
+| [icon-brief](skills/icon-brief/) | Derives icon concepts from product context and visual references, with distinctive silhouettes, style direction, palette roles, and small-size risks. |
+| [icon-draw](skills/icon-draw/) | Draws 2-4 master 1024×1024 SVG candidates from an approved concept and palette, using the safe static SVG subset. |
+| [icon-critique](skills/icon-critique/) | Renders candidates at 512/64/32/16 px, reviews the actual pixels, applies targeted fixes with a hard iteration cap, and waits for the human to pick. |
 | [icon-export](skills/icon-export/) | Exports the approved master SVG to platform assets — favicon set, PWA/maskable, App Store/Play PNGs, macOS icns, GitHub social preview — with overwrite guards and size validation. |
 
 ## Repository structure

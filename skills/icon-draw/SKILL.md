@@ -1,17 +1,16 @@
 ---
 name: icon-draw
-description: Draws a minimalist app or OSS package icon as a master 1024x1024 SVG - symmetric glyph on a dark grey rounded-rectangle (Apple-style radius). Use when the user asks to design, create, draw, generate, or make an app icon, package icon, or simple logo mark. Not for icon concept brainstorming, critiquing renders, exporting favicon/assets, UI icon sets, or vectorizing images.
+description: Draws app or package icon candidates as master 1024x1024 SVGs that follow an approved brief, brand palette, and supported SVG subset. Use when users ask to draw or create an icon from a stated direction. Not for concept brainstorming, orchestrating the full pipeline, critiquing renders, exporting assets, UI icon sets, or vectorizing images.
 license: MIT
 argument-hint: <brief path, concept name, or one-line product description>
 ---
 
 # icon-draw
 
-Construct candidate icons as clean SVG code: **symmetric glyph on a dark grey
-rounded rectangle**, geometry so disciplined that every candidate passes a
-deterministic linter before a human ever sees it. LLM one-shot SVG fails in
-known ways (bloated paths, fake `<image>` vectors, over-precise coords) — this
-skill exists to prevent exactly those failures.
+Construct clean SVG candidates that follow the approved brief and product
+identity. Keep SVG geometry valid without forcing a generic house style. LLM
+one-shot SVG fails in known ways (bloated paths, fake `<image>` vectors,
+over-precise coords); catch those failures while preserving the approved design.
 
 ## When NOT to use
 
@@ -24,15 +23,15 @@ skill exists to prevent exactly those failures.
 
 1. **Get the brief.** Read `icon-design/brief.md` if it exists. If not, write a
    5-line quick brief (product, concept + one Gestalt device, symmetry axis,
-   palette) to `icon-design/brief.md` marked "quick brief" — so critique/export
+   palette and visual direction) to `icon-design/brief.md` marked "quick brief" — so critique/export
    have provenance — and state it to the user; for anything ambitious,
    recommend `icon-brief` instead. Never draw without a stated concept.
 2. **Start from the template.** Copy `assets/master-template.svg` (relative to
    this skill): square `viewBox="0 0 1024 1024"` and a background
    `<path id="bg">` that is a real **squircle** — Apple's corner is a
    continuous curve, not a circular arc, so a plain `rx` rect renders subtly
-   wrong beside system icons. Never hand-write or hand-edit that path;
-   regenerate it:
+   wrong beside system icons. Set its fill from the approved palette. Never
+   hand-write or hand-edit the path; regenerate it:
 
    ```bash
    python3 "${CLAUDE_SKILL_DIR}/scripts/squircle.py"            # iOS 26+ (radius 25.78%, smoothing 0.6)
@@ -48,7 +47,8 @@ skill exists to prevent exactly those failures.
    a `<rect>`) and a `<path>` with absolute commands when the subject has a
    silhouette — one well-made path that reads as a drop, an arch or a bird
    beats five primitives arranged into something that only reads as an
-   arrangement. Budget: 1 stroke width (2 max, ≥ 48 units), ≤ 3 colors total.
+   arrangement. Use the brief's palette; there is no three-color cap. The SVG
+   subset supports hex fills and strokes. Budget: 1 stroke width (2 max, ≥ 48 units).
    **There is no shape-count budget** — element count was measured against a
    66-mark ballot and predicted nothing. What predicts survival is *mass*:
    - **Fill, don't outline.** A filled silhouette with knockout details beats
@@ -60,7 +60,8 @@ skill exists to prevent exactly those failures.
    - **Cut detail out of the mass** rather than adding parts beside it —
      background-coloured knockouts inside a solid body (figure-ground) is the
      construction that won most often.
-   - **Symmetry by construction** (vertical axis): draw axis-straddling parts
+   - **Symmetry by construction** only when the brief calls for it (vertical
+     axis): draw axis-straddling parts
      centered on x=512, put off-axis parts in `<defs><g id="half">…</g></defs>`
      and render with
      `<use href="#half"/><use href="#half" transform="translate(1024,0) scale(-1,1)"/>`.
@@ -123,10 +124,9 @@ skill exists to prevent exactly those failures.
   lint-cleanest candidates were ranked last by a human and the two that failed
   the linter placed first and second. Use it to catch what would break, never
   as evidence that a mark is working. Critique is a separate, mandatory step.
-- **Symmetry is a default, not a virtue.** It buys stability and cheap
-  construction on geometric subjects. On an organic subject it deforms the
-  silhouette into something abstract — take `--axis none` from the brief and
-  draw the animal.
+- **Symmetry follows the brief, not a house rule.** On an organic subject it
+  can deform the silhouette into something abstract — take `--axis none` from
+  the brief and draw the subject naturally.
 - If the linter can't run (no `python3`, missing script), **fail closed**:
   label the candidates UNVALIDATED, report the gap, and don't hand them to
   critique/export as if they had passed.

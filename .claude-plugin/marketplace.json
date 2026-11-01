@@ -1,14 +1,14 @@
 {
-  "name": "icon-designer-skills",
+  "name": "iconify-design-skills",
   "owner": {
-    "name": "Paldom",
-    "url": "https://github.com/Paldom"
+    "name": "borg0ai",
+    "url": "https://github.com/borg0ai"
   },
   "plugins": [
     {
-      "name": "icon-designer-skills",
+      "name": "iconify-design-skills",
       "source": ".",
-      "description": "Agent Skills that design minimalist app and OSS package icons from a text brief or project context - symmetric logos on dark grey, Apple-style rounded-rectangle backgrounds.",
+      "description": "Agent Skills for designing distinctive app and OSS package icons that match product identity, from concept through platform assets.",
       "category": "development"
     }
   ]

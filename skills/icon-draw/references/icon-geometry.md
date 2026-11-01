@@ -13,8 +13,9 @@ pipeline notes
 - Master canvas: `viewBox="0 0 1024 1024"` — matches the largest size every
   platform asks for, divides cleanly into 16/32/64… exports.
 - Background: a **squircle `<path id="bg">`**, generated — never hand-written —
-  by `scripts/squircle.py`. Flat fill, dark grey band `#26262B`–`#2E2E33`, no
-  gradient, no stroke. Defaults: radius **25.78%** of the side, corner
+  by `scripts/squircle.py`. Flat fill from the approved design brief; dark grey
+  `#26262B`–`#2E2E33` is an optional fallback. The current SVG subset supports
+  no gradient or stroke. Defaults: radius **25.78%** of the side, corner
   smoothing **0.6**. `--legacy` emits the iOS 7–18 22.37% shape; `--size`
   rescales for non-1024 canvases.
 - The rounded-rect background ships on **self-rendered surfaces** (favicons,

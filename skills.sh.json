@@ -4,8 +4,9 @@
   "groupings": [
     {
       "title": "Design pipeline",
-      "description": "Brief to shipped assets: name a mark with real mass, draw the master SVG on a true Apple-style squircle, critique it against the pixels at 512 down to 16, and export every platform format metadata-free.",
+      "description": "Follow product identity from design brief to approved master and platform assets, with rendered-size critique and human selection.",
       "skills": [
+        "icon-design",
         "icon-brief",
         "icon-draw",
         "icon-critique",

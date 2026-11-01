@@ -1,17 +1,17 @@
 ---
 name: icon-brief
-description: Derives a minimalist icon design brief from a text prompt or the current repo - 3-5 symbol concepts (one Gestalt device each), symmetry axis, dark-grey house palette, distinctiveness notes. Use when the user wants icon ideas, icon concepts, symbol metaphors, or a pre-drawing brief for an app/package icon. Not for producing the artwork, judging renders, or shipping platform assets.
+description: Derives an app or package icon design brief from product context and visual references - concepts, silhouette, visual style, and palette. Use when users ask for icon concepts or a pre-drawing brief. Not for orchestrating the full pipeline, producing artwork, judging renders, or shipping platform assets.
 license: MIT
 argument-hint: <product name or one-line description>
 ---
 
 # icon-brief
 
-Turn "we need an icon" into a decision-ready, one-page design brief for a
-minimalist app/OSS package icon in this repo's house style: a **symmetric glyph
-on a dark grey rounded-rectangle background**. The brief is the contract the
-`icon-draw` skill executes; a good one removes every judgment call that doesn't
-belong in SVG code.
+Turn "we need an icon" into a decision-ready, one-page design brief for an
+app or package icon. Match the product's actual visual identity and user
+references. The repository's former dark-grey, symmetric, three-color house
+style is only a fallback when the user provides no direction. The brief is the
+contract `icon-draw` executes.
 
 ## When NOT to use
 
@@ -33,8 +33,8 @@ belong in SVG code.
    defines it, existing brand color if any.
 2. **Clarify or declare.** If the product's purpose, audience, or category is still
    unclear, ask 2-3 targeted questions (what it does, who it's for, category
-   neighbors). In headless/autonomous runs, state assumptions explicitly at the
-   top of the brief instead of asking.
+   neighbors, and desired visual style). In headless/autonomous runs, state
+   assumptions explicitly at the top of the brief instead of asking.
 3. **Generate 3-5 concepts.** For each concept:
    - a **name** and one-sentence metaphor ("anchor chain link = registry holds images");
    - **the object it depicts, in three words or less** — "a lighthouse", "an
@@ -50,9 +50,8 @@ belong in SVG code.
    - exactly **one dominant Gestalt device** — figure-ground, closure, continuity,
      proximity, or similarity-break (never stack devices — stacked cleverness
      collapses at 16px);
-   - the **symmetry axis**: vertical (default; reads as stable/iconic),
-     horizontal, or **none** when the subject is organic and symmetry would
-     deform it — say which and why;
+   - the **symmetry axis**: vertical, horizontal, or none. Choose from the
+     subject and reference style; do not impose symmetry when it harms fit;
    - a one-line **16px risk** note (what detail dies first at favicon size).
 4. **Distinctiveness check (anti-blandemic).** Two comparisons, both required:
    - **Category clichés.** List the 3-5 obvious marks in the product's category
@@ -65,10 +64,13 @@ belong in SVG code.
      A mark that lands on one of these is not a product icon — it is a button.
      This failure is invisible to linters and renders perfectly at every size,
      so it has to be caught here.
-5. **Fix the palette.** House style: background dark grey `#26262B`-`#2E2E33`
-   range, glyph in off-white `#E8E8EA`, plus **at most one** accent tone. If the
-   user demands gradients/rainbows/photorealism, surface the house-style conflict
-   and ask whether to override (don't silently comply or silently refuse).
+5. **Set the palette from the product.** Use supplied brand colors and design
+   references first. Name each color's role and preserve readable contrast. If
+   no palette exists, start with a purposeful 5-7 color palette when it fits the
+   product; seven is welcome, not a quota. Three colors is not a cap. Use the old
+   dark-grey/off-white palette only as an optional fallback. If a requested
+   effect exceeds the static SVG subset, name the limitation and ask before
+   changing the visual direction.
 6. **Write the brief** to `icon-design/brief.md` (create the directory; ask before
    overwriting an existing brief). Use the output spec below.
 7. **Recommend next step**: rank the concepts, mark your favorite with a one-line
@@ -91,7 +93,8 @@ Distinct from: <which clichés and how>
 Not a UI glyph: <which control it was checked against>
 
 ## Palette
-Background #2A2A2E · Glyph #E8E8EA · Accent <hex or "none">
+Visual direction: <traits from product/reference>
+Palette: <color hex> — <role>; <color hex> — <role>; ...
 
 ## Recommendation
 <concept + why, 2 lines max>
@@ -105,12 +108,10 @@ Background #2A2A2E · Glyph #E8E8EA · Accent <hex or "none">
   success; the distinctiveness check (step 4) is the point of this skill, not a
   formality.
 - **An arrangement is not a concept.** Marks that can only be described as
-  primitives in a relationship consistently lose to marks that depict a thing —
-  and they are the natural output of "one Gestalt device + a small shape
-  budget" if you let the budget drive the idea. Name the object first, then
-  find the cheapest geometry that draws it; never the reverse.
-- Symmetry is the house constraint, so distinctiveness must come from silhouette
-  and concept — a symmetric layout of a cliché is still a cliché.
+  primitives in a relationship consistently lose to marks that depict a thing.
+  Name the product-relevant object first, then find a clear way to draw it.
+- Symmetry is a choice driven by the subject and reference style. Distinctiveness
+  must come from silhouette and concept; symmetry alone does not make a mark unique.
 - Don't propose text/letterforms as the primary glyph: marks must work with
   `icon-draw`'s no-`<text>` constraint (letter shapes drawn as paths are allowed
   but note the licensing/legibility cost).

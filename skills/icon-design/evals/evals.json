@@ -1,0 +1,63 @@
+{
+  "skill": "icon-design",
+  "cases": [
+    { "type": "should_trigger", "prompt": "guide me through the full icon design workflow in this repo" },
+    { "type": "should_trigger", "prompt": "which icon skills should I run, and in what order?" },
+    { "type": "should_trigger", "prompt": "help me make an icon that matches our product's visual identity" },
+    { "type": "should_trigger", "prompt": "coordinate icon brief, drawing, critique, and export for this app" },
+    { "type": "should_trigger", "prompt": "I have brand references; guide the icon process using them" },
+    { "type": "should_trigger", "prompt": "make a colorful seven-color app icon that fits this design" },
+    { "type": "should_trigger", "prompt": "start an icon project and tell me which skill comes next" },
+    { "type": "should_trigger", "prompt": "walk me through designing and shipping an icon with these skills" },
+    { "type": "should_trigger", "prompt": "how do I use the icon skills end to end?" },
+    { "type": "should_trigger", "prompt": "the icon should feel like our playful, layered brand, not generic minimalism" },
+    { "type": "should_not_trigger", "prompt": "brainstorm three symbols for a calendar icon" },
+    { "type": "should_not_trigger", "prompt": "draw this approved icon brief as an SVG" },
+    { "type": "should_not_trigger", "prompt": "critique this icon at 16 pixels" },
+    { "type": "should_not_trigger", "prompt": "export favicons from icon-design/icon.svg" },
+    { "type": "should_not_trigger", "prompt": "change the icon color in my React toolbar" },
+    { "type": "should_not_trigger", "prompt": "create a full brand guide with typography and a color system" },
+    { "type": "should_not_trigger", "prompt": "vectorize this raster logo" },
+    { "type": "should_not_trigger", "prompt": "explain how SVG path commands work" },
+    { "type": "should_not_trigger", "prompt": "make a hero illustration for our landing page" },
+    { "type": "should_not_trigger", "prompt": "which icon font should we use in the dashboard?" },
+    {
+      "type": "quality",
+      "prompt": "Guide the full icon design process for our app using the attached brand references and seven colors",
+      "expected_behavior": [
+        "extracts product purpose, audience, visual traits, and palette from supplied references before choosing concepts",
+        "routes through icon-brief, icon-draw, icon-critique, and icon-export in order, skipping only stages the user does not need",
+        "treats seven colors as valid and never reduces the palette to three by default",
+        "passes the same approved design direction and palette through each stage without re-ideating during drawing",
+        "stops at critique for human candidate selection and requires an approved master before export"
+      ]
+    },
+    {
+      "type": "quality",
+      "prompt": "I only need concepts for a new icon; guide me to the right skill",
+      "expected_behavior": [
+        "routes to icon-brief only and explains the next optional step",
+        "does not create SVGs or export files",
+        "uses product and brand context to shape the brief"
+      ]
+    },
+    {
+      "type": "quality",
+      "prompt": "Our brand guide says vivid, layered gradients and asymmetry; make an icon through this pipeline",
+      "expected_behavior": [
+        "treats the supplied brand direction as the design source of truth instead of imposing dark grey, symmetry, or a three-color cap",
+        "identifies current SVG safe-subset limits that conflict with requested effects and reports them clearly",
+        "offers a faithful supported interpretation or asks the user to choose before discarding required brand traits"
+      ]
+    },
+    {
+      "type": "quality",
+      "prompt": "The icon is approved; export web, Apple, and Android assets",
+      "expected_behavior": [
+        "routes directly to icon-export when an approved master exists",
+        "does not rerun concepting, drawing, or critique without need",
+        "preserves exporter overwrite safeguards"
+      ]
+    }
+  ]
+}

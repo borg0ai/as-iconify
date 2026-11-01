@@ -27,7 +27,7 @@ This repo's baseline:
 ## Reporting a vulnerability
 
 Please **do not** open a public issue for security problems. Use GitHub's
-[private vulnerability reporting](https://github.com/Paldom/icon-designer-skills/security/advisories/new)
+[private vulnerability reporting](https://github.com/borg0ai/as-iconify/security/advisories/new)
 for this repository. You should receive a response within 7 days.
 
 > Maintainer setup note: Private Vulnerability Reporting is **off by default** and

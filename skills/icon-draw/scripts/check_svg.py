@@ -2,12 +2,12 @@
 """check_svg.py — deterministic lint for house-style icon SVGs.
 
 ERRORs are the hard contract: the safe static-SVG subset (no scripts, external
-refs, DOCTYPE, raster, text, CSS), a square 1024 viewBox, the dark rounded-rect
-background, and the palette/stroke/precision budgets. A candidate that trips
-one is unusable.
+refs, DOCTYPE, raster, text, CSS), a square 1024 viewBox, a full-canvas
+background, and stroke/precision constraints. A candidate that trips one is
+unusable.
 
-WARNs are house guidance: symmetry, bbox centring, glyph size band, stroke
-weight, maskable safe zone. These are advisory on purpose — geometry
+WARNs are design guidance: background brightness, symmetry, bbox centring,
+glyph size band, stroke weight, maskable safe zone. These are advisory on purpose — geometry
 cleanliness turned out to be a poor predictor of which mark a human picks, so
 they must not silently suppress a candidate. Use --strict to promote them.
 
@@ -34,7 +34,7 @@ CANVAS = 1024.0
 TOL = 6.0  # geometric tolerance (units) for symmetry matching
 OFF_AXIS_TOL = 24.0  # slack for the axis with no symmetry to pin it
 BG_RX_RANGE = (180.0, 290.0)  # 22.37% legacy (229) .. 25.78% iOS 26+ (264), with slack
-BG_MAX_LUMINANCE = 0.25  # background must be dark
+BG_MAX_LUMINANCE = 0.25  # legacy dark-background preference; warn only
 MASKABLE_SAFE_RADIUS = 0.40 * CANVAS  # PWA maskable safe zone (circle)
 GLYPH_MIN = 0.35 * CANVAS  # glyph bbox max-dimension guidance
 GLYPH_MAX = 0.66 * CANVAS
@@ -421,7 +421,6 @@ def main() -> int:
 
     ids: set[str] = set()
     hrefs: list[str] = []
-    paints: set[str] = set()
     stroke_widths: set[float] = set()
     rendered: list[Shape] = []  # document-order drawable shapes (outside defs)
     mirror_use: str | None = None
@@ -468,9 +467,7 @@ def main() -> int:
             if name in ("fill", "stroke"):
                 v = value.strip()
                 if v != "none":
-                    if COLOR_RE.match(v):
-                        paints.add(v.lower())
-                    else:
+                    if not COLOR_RE.match(v):
                         err(f"{name}={v!r} — colors must be hex (#rgb/#rrggbb) or 'none'")
             if name == "stroke-width":
                 try:
@@ -556,15 +553,14 @@ def main() -> int:
         err(f"first rendered element must be the background <path> or <rect>, found <{bg.tag}>")
     fill = (e.get("fill") or "").lower()
     if COLOR_RE.match(fill) and luminance(fill) > BG_MAX_LUMINANCE:
-        err(
-            f"background fill {fill} is too light (luminance {luminance(fill):.2f} > {BG_MAX_LUMINANCE}) — house style is dark grey"
+        warn(
+            f"background fill {fill} is lighter than the legacy dark-grey preference "
+            f"(luminance {luminance(fill):.2f} > {BG_MAX_LUMINANCE}); check the brief and contrast"
         )
     if e.get("stroke") not in (None, "none"):
         warn("background has a stroke — usually unwanted")
 
     # --- budgets ---
-    if len(paints) > 3:
-        err(f"{len(paints)} distinct colors used ({sorted(paints)}) — max 3")
     if len(stroke_widths) > 2:
         err(f"{len(stroke_widths)} distinct stroke widths ({sorted(stroke_widths)}) — max 2")
     for w in stroke_widths:

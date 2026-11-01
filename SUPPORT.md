@@ -1,6 +1,6 @@
 # Support
 
-Thanks for using Icon Designer Skills! Fastest routes to help:
+Thanks for using Iconify Design Skills. Fastest routes to help:
 
 - **A skill misbehaves or never triggers** — open a
   [bug report](../../issues/new?template=bug_report.md). Include the skill name,

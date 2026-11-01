@@ -49,7 +49,7 @@ iteration cap.
    `references/critique-rubric.md`: **reads as its subject** (can a stranger
    name the thing?), **mass** (the `ink=` figure the renderer prints — under
    ~16% at 64 px is thin, over ~21% is safe), 16 px silhouette, one dominant Gestalt device, stroke
-   consistency, optical centering, contrast on dark, plus a distinctiveness
+   consistency, optical centering, contrast against the brief's palette, plus a distinctiveness
    *note*. Score 1–5 per axis with a one-line reason grounded in what you
    actually see ("the gap between the arcs closes up at 32 px").
    Distinctiveness — including collision with a universal UI glyph — is

@@ -6,7 +6,7 @@ consensus, [practitioner] = uncontested trade practice, [weak] = single source.
 
 **Contents:** The naming test · The mass test · Gestalt devices · Negative space ·
 Distinctiveness vs the "blandemic" · Small-size test ladder · Symmetry notes ·
-Palette & contrast on dark grey
+Palette & contrast
 
 ## The naming test [practitioner]
 
@@ -155,12 +155,14 @@ Rules:
   the asymmetric wading-bird silhouettes stayed readable as birds. Symmetry is a
   default for geometric subjects, not a rule for every subject.
 
-## Palette & contrast on dark grey [practitioner]
+## Palette & contrast [practitioner]
 
-- House palette: background dark grey in the `#26262B`–`#2E2E33` band (flat, no
-  gradient), glyph off-white `#E8E8EA` (pure `#FFFFFF` on near-black halates at
-  small sizes), at most one accent tone.
-- 1-3 colors total; design and validate the mark in pure monochrome first —
-  figure-ground must carry the concept before color does.
-- Thin strokes and tight counters die first on dark backgrounds at 16 px; favor
-  chunky strokes and open counters.
+- Start from product brand assets or user-provided references. Assign colors
+  clear roles and preserve contrast between adjacent forms.
+- There is no universal color-count cap. A purposeful 5-7 color palette is a
+  valid starting point when it fits the product; do not reduce it to three by
+  default or add colors to hit a quota. Judge the rendered result at 512/64/32/16 px.
+- The former dark-grey `#26262B`–`#2E2E33` background, off-white glyph, and flat
+  fills remain an optional fallback, not a project-wide requirement.
+- Thin strokes and tight counters disappear at 16 px against both dark and light
+  backgrounds; favor clear silhouettes, open counters, and sufficient contrast.

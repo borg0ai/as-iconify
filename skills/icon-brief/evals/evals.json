@@ -30,7 +30,7 @@
         "each concept states its symmetry axis (vertical, horizontal, or none with a reason) and a one-line small-size risk note",
         "includes distinctiveness notes comparing against the obvious category cliches (boxes, whales, anchors, shipping containers)",
         "checks each concept's silhouette against universal UI glyphs (download, upload, eject, play, share, refresh, location pin, chevron stack) and kills any concept that lands on one",
-        "specifies the house palette: dark grey background, off-white glyph, at most one accent tone",
+        "uses product colors or supplied visual references; without them, may explore up to seven purposeful colors without treating three as a cap",
         "writes the brief to icon-design/brief.md and recommends running icon-draw next",
         "rejects concepts that can only be drawn as linework (compass, stethoscope, scaffold) in favour of objects with a filled silhouette"
       ]
@@ -58,9 +58,9 @@
       "type": "quality",
       "prompt": "give me colorful rainbow gradient icon ideas for my weather app",
       "expected_behavior": [
-        "notes the repo house style (dark grey rounded-rectangle background, minimal flat palette, no gradients) before proposing",
-        "offers house-style-compliant concept alternatives and asks whether to override the style rather than silently ignoring the request",
-        "does not produce gradient-based concepts as the default"
+        "uses a vivid multicolor palette as requested instead of imposing a dark-grey three-color house style",
+        "explains that gradients exceed the supported static SVG subset and asks before changing a required brand trait",
+        "preserves the requested color direction in the brief"
       ]
     }
   ]
