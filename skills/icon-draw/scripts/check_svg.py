@@ -466,9 +466,8 @@ def main() -> int:
                 transformed = True
             if name in ("fill", "stroke"):
                 v = value.strip()
-                if v != "none":
-                    if not COLOR_RE.match(v):
-                        err(f"{name}={v!r} — colors must be hex (#rgb/#rrggbb) or 'none'")
+                if v != "none" and not COLOR_RE.match(v):
+                    err(f"{name}={v!r} — colors must be hex (#rgb/#rrggbb) or 'none'")
             if name == "stroke-width":
                 try:
                     stroke_widths.add(float(value))
